@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Reimbursement {
-	protected int ID;
-	protected int author;
-	protected int resolver;
-	protected String description;
-	protected double amount;
+	private int ID;
+	private int author;
+	private int resolver;
+	private String description;
+	private double amount;
 	
 	public Reimbursement() {
 		super();
