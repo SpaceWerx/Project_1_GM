@@ -2,9 +2,9 @@ package Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import Models.Reimbursement;
 import Models.Status;
-
 public class Reimbursement_Services {
 	List<Reimbursement> reimbursements;
 	
@@ -14,7 +14,7 @@ public class Reimbursement_Services {
 			Reimbursement latestReimbursement = reimbursements.get(reimbursements.size() -1);
 			int id = latestReimbursement.getID() + 1; //New ID is 1 higher than the previous highest
 			
-			reimbursementToBeSubmitted.setID(id);;
+			reimbursementToBeSubmitted.setID(id);
 			reimbursementToBeSubmitted.setStatus(Status.Pending);
 			reimbursements.add(reimbursementToBeSubmitted);
 			
