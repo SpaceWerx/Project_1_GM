@@ -1,47 +1,35 @@
 package Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
-import Models.Reimbursement;
-import Models.Role;
+import DAO.UserDAO;
 import Models.User;
 
 public class UserService {
-	List<User> users;
 	
-	public User getUserByUsername(String username) {
+	UserDAO uDAO = new UserDAO();
+	
+	public List<User> getUsers() throws SQLException{
 		
-			for (User user : users) {
-			if (user.getUsername() == username) {
-				return user;
-			}
-			}
-				return null;
-	
- }
-	
-	
-	
-	public User getUserById(int id) {
-		
-			for (User user : users) {
-			if (user.getId() == id) {
-				return user;
-			}
-			}
-				return null;
+			List<User> users = uDAO.getUsers();
 			
+			return users;
 	}
-	
-	
-	
-	public User getUserByRole(Role role) {
+	public void addUser(User newUser) throws SQLException{
 		
-			for (User user : users) {
-			if (user.getRole() == role) {
-				return user;
-			}
-			}
-				return null;
+		uDAO.insertUser(newUser);
+	}
+	public List<User> getUserById(int id){
+		
+		List<User> user = uDAO.getUserById(id);
+		
+		return user;
+	}
+	public List<User> getUsersByRoleTitle(String roleTitle){
+		
+		List<User> users = uDAO.getUsersByRoleTitle(roleTitle);
+		
+		return users;
 	}
 }
