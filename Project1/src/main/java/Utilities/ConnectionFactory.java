@@ -28,7 +28,7 @@ public class ConnectionFactory {
 			e.printStackTrace();
 		}
 		
-		String url ="jdbc:postgresql://project1.ciq8ho5l9gk8.us-west-1.rds.amazonaws.com:5432/postgres?currentSchema=User";
+		String url ="jdbc:postgresql://project1.ciq8ho5l9gk8.us-west-1.rds.amazonaws.com:5432/postgres?currentSchema=USERS";
 		
 		String username = "postgres";
 		

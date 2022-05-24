@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS ers_users CASCADE;
 DROP TABLE IF EXISTS ers_reimbursements CASCADE;
 
 CREATE TYPE ROLE AS ENUM ('Employee', 'Manager');
-CREATE TYPE ROLE AS ENUM ('Lodging', 'Travel', 'Food', 'Other');
+CREATE TYPE TYPE AS ENUM ('Lodging', 'Travel', 'Food', 'Other');
 CREATE TYPE status AS enum('Pending', 'Approved', 'Denied');
 
 CREATE TABLE ers_users (
@@ -36,4 +36,6 @@ CONSTRAINT fk_resolver
 
 
 INSERT INTO ers_users (username,PASSWORD,role)
-VALUES ('default', 'guest', 'Employee',),('admin', 'admin', 'Manager');
+VALUES ('GUEST', 'GUEST', 'Employee'),('GENERICUSER1' 'GENERICPASS', 'Employee'),('GENERICUSER2' 'GENERICPASS', 'Employee'),('GENERICUSER3' 'GENERICPASS', 'Employee')('admin', 'admin', 'Manager');
+
+SELECT * FROM ers_users;
