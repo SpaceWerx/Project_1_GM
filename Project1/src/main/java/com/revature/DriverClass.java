@@ -2,18 +2,16 @@ package com.revature;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import Controller.EmployeeController;
+import Controller.UserController;
 import Utilities.ConnectionFactory;
 import io.javalin.Javalin;
 
 public class DriverClass {
-
-//rename all employee to user
-		EmployeeController ec = new EmployeeController();
-				
-		public void main (String[] args) throws SQLException{
+	public static void main (String[] args) throws SQLException{
+			UserController uc = new UserController();
 			
-			try(Connection conn = ConnectionFactory.getconnection()){
+			
+			try(Connection conn = ConnectionFactory.getConnection()){
 				System.out.println("Connection Successful :");
 			} catch(SQLException e) {
 				System.out.println("Connection Failed");
@@ -35,10 +33,11 @@ public class DriverClass {
 		).start(3000);
 
 		//Now we need our endpoints
-		app.get("/employee", ec.getEmployeesHandler);
+		app.get("/user", uc.getUserHandler);
 		
-		app.post("/employee", ec.insertEmployeesHandler);
+		app.post("/user", uc.insertUserHandler);
+		
+		app.post("/login", null);
 
 		}
-	}
 }

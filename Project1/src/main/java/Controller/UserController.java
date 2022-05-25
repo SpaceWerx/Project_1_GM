@@ -1,22 +1,17 @@
 package Controller;
 
-public class UserController {
+import java.util.List;
 
-	
-	package Controller;
+import com.google.gson.Gson;
 
-	import java.util.List;
+import Models.User;
+import Service.UserService;
+import io.javalin.http.Handler;
 
-	import com.google.gson.Gson;
-
-	import Models.Employee;
-	import Service.EmployeeService;
-	import io.javalin.http.Handler;
-
-	public class EmployeeController {
-		EmployeeService es = new EmployeeService();
+	public class UserController {
+		UserService us = new UserService();
 		
-		public Handler getEmployeesHandler = (ctx) ->{
+		public Handler getUserHandler = (ctx) ->{
 			
 	//This does not work anymore like it is intended to, do not use this		
 //			if(ctx.req.getSession(false) != null) {
@@ -27,28 +22,27 @@ public class UserController {
 //				ctx.status(401);
 //			}
 				
-			List<Employee> allEmployees = es.getEmployees();
+			List<User> allUsers = us.getUsers();
 			
 			Gson gson = new Gson();
 			
-			String JSONObject = gson.toJson(allEmployees);
+			String JSONObject = gson.toJson(allUsers);
 				
 			ctx.result(JSONObject);
 			ctx.status(200);
 				
 		};
 			
-		public Handler insertEmployeesHandler = ctx ->{
+		public Handler insertUserHandler = ctx ->{
 			String body = ctx.body();
 			
 			Gson gson = new Gson();
 			
-			Employee employee = gson.fromJson(body, Employee.class);
+			User user = gson.fromJson(body, User.class);
 			
-			es.addEmployee(employee);
+			us.addUser(user);
 			
-			ctx.result("Employee successfully added!");
+			ctx.result("User successfully added!");
 			ctx.status(201);
 		};
-	}
 }
