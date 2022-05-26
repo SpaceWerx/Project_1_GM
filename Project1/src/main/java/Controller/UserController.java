@@ -48,8 +48,9 @@ import io.javalin.http.Handler;
 		
 		public Handler getUserByID = (ctx) ->{
 			
+			int id = Integer.parseInt(ctx.pathParam("id"));
 			
-					List<User> userById = us.getUserById();
+					List<User> userById = us.getUserById(id);
 							
 					Gson gson = new Gson();
 					
@@ -62,7 +63,7 @@ import io.javalin.http.Handler;
 		public Handler getUsername = (ctx) ->{
 			
 			
-			List<User> userById = us.getUserByUsername();
+			List<User> userById = us.getUserByUsername(null);
 					
 			Gson gson = new Gson();
 			

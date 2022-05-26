@@ -3,6 +3,8 @@ package Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import DAO.ReimbursementDAO;
 import Models.Reimbursement;
 import Models.Role;
@@ -60,5 +62,13 @@ public class ReimbursementService {
 	
 	public List<Reimbursement> getReimbursementsByAuthor(int userId) { 
 		return reimbursementDAO.getReimbursementsByUser (userId);
+	}
+	
+//	public Handler handleProcess = (ctx) =>{
+//		String body = ctx.body();
+//		Gson gson = new Gson();
+//		Reimbursement reimbursement =gson.fromJson(body,  Reimbursement.class);
+//		int id = reimbursement.getResolver();
+//		Status statusInput = 
 	}
 }
