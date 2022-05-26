@@ -23,8 +23,7 @@ import io.javalin.http.Handler;
 //			}
 				
 			List<User> allUsers = us.getUsers();
-			System.out.println("In UserHandler");
-			
+					
 			Gson gson = new Gson();
 			
 			String JSONObject = gson.toJson(allUsers);
@@ -46,4 +45,30 @@ import io.javalin.http.Handler;
 			ctx.result("User successfully added!");
 			ctx.status(201);
 		};
+		
+		public Handler getUserByID = (ctx) ->{
+			
+			
+					List<User> userById = us.getUserById();
+							
+					Gson gson = new Gson();
+					
+					String JSONObject = gson.toJson(userById);
+						
+					ctx.result(JSONObject);
+					ctx.status(200);
+		};
+		
+		public Handler getUsername = (ctx) ->{
+			
+			
+			List<User> userById = us.getUserByUsername();
+					
+			Gson gson = new Gson();
+			
+			String JSONObject = gson.toJson(userById);
+				
+			ctx.result(JSONObject);
+			ctx.status(200);
+};
 }

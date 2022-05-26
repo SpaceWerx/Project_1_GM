@@ -26,9 +26,9 @@ public class UserService {
 		
 		return user;
 	}
-	public List<User> getUsersByRoleTitle(String roleTitle){
+	public List<User> getUserByUsername(String username){
 		
-		List<User> users = uDAO.getUsersByRoleTitle(roleTitle);
+		List<User> users = uDAO.getUserByUsername(username);
 		
 		return users;
 	}

@@ -30,7 +30,7 @@ public class DriverClass {
 				config -> {
 					config.enableCorsForAllOrigins();
 				}
-		).start(4000);
+		).start(3000);
 
 		//Now we need our endpoints
 		app.get("/user", uc.getUserHandler);

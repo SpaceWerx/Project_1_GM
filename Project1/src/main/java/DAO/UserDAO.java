@@ -53,11 +53,11 @@ public class UserDAO {
 			
 			ps.setString(1, newUser.getUsername());
 			ps.setString(2, newUser.getPassword());
-			ps.setRole(3, newUser.getRole());
+			ps.setrole(3, newUser.getRole());
 			
 			ps.executeUpdate();
 			
-			System.out.println("User " + newUser.getF_name() + " was created. Welcome to the team!");
+			System.out.println("User " + newUser.getUsername() + " was created. Welcome to the team!");
 		}
 		catch(SQLException e) {
 			System.out.println("Something went wrong");
@@ -69,7 +69,7 @@ public class UserDAO {
 		try(Connection conn = ConnectionFactory.getConnection()){
 			ResultSet rs = null;
 			
-			String sql = "select * from users where user_id = ?;";
+			String sql = "select * from users where id = ?;";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
@@ -81,10 +81,10 @@ public class UserDAO {
 			
 			while(rs.next()) {
 				User u = new User(
-						rs.getInt("user_id"),
-						rs.getString("f_name"),
-						rs.getString("l_name"),
-						rs.getInt("role_id")				
+						rs.getInt("id"),
+						rs.getString("username"),
+						rs.getString("password"),
+						Role.valueOf(rs.getString("role"))				
 						);
 				userList.add(u);
 			}
@@ -98,7 +98,7 @@ public class UserDAO {
 		
 	}
 
-	public List<User> getUsersByRoleTitle(String roleTitle) {
+	public List<User> getUserByUsername(String username) {
 		try(Connection conn = ConnectionFactory.getConnection()){
 			ResultSet rs = null;
 			
@@ -106,7 +106,7 @@ public class UserDAO {
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, roleTitle);
+			ps.setString(1, username);
 			
 			rs = ps.executeQuery();
 			
@@ -114,10 +114,10 @@ public class UserDAO {
 			
 			while(rs.next()) {
 				User u = new User(
-						rs.getInt("user_id"),
-						rs.getString("f_name"),
-						rs.getString("l_name"),
-						rs.getInt("role_id")				
+						rs.getInt("id"),
+						rs.getString("username"),
+						rs.getString("password"),
+						Role.valueOf(rs.getString("role"))				
 						);
 				userList.add(u);
 			}
