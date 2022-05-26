@@ -82,7 +82,7 @@ public class ReimbursementDAO {
 						reimbursementList.add(r);
 				
 			}
-				return reimbursementList();
+				return reimbursementList;
 				
 			} catch (SQLException e) {
 				System.out.println("Something went wrong with obtaining the list");
@@ -120,7 +120,7 @@ public class ReimbursementDAO {
 						reimbursementList.add(r);
 				
 			}
-				return reimbursementList();
+				return reimbursementList;
 				
 			} catch (SQLException e) {
 				System.out.println("Something went wrong with obtaining the reimbursements!");
@@ -157,7 +157,7 @@ public class ReimbursementDAO {
 						reimbursementList.add(r);
 				
 			}
-				return reimbursementList();
+				return reimbursementList;
 				
 			} catch (SQLException e) {
 				System.out.println("Something went wrong with obtaining the database");

@@ -6,48 +6,48 @@ import java.util.Objects;
 
 public class User {
 	
-	private int user_id;
-	private String f_name;
-	private String l_name;
-	private int role_id;
+	private int id;
+	private String username;
+	private String password;
+	private Role role;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int user_id, String f_name, String l_name, int role_id) {
+	public User(int id, String username, String password, Role role) {
 		super();
-		this.user_id = user_id;
-		this.f_name = f_name;
-		this.l_name = l_name;
-		this.role_id = role_id;
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
 	}
-	public int getUser_id() {
-		return user_id;
+	public int getId() {
+		return id;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getF_name() {
-		return f_name;
+	public String getUsername() {
+		return username;
 	}
-	public void setF_name(String f_name) {
-		this.f_name = f_name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getL_name() {
-		return l_name;
+	public String getPassword() {
+		return password;
 	}
-	public void setL_name(String l_name) {
-		this.l_name = l_name;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public int getRole_id() {
-		return role_id;
+	public Role getRole() {
+		return role;
 	}
-	public void setRole_id(int role_id) {
-		this.role_id = role_id;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(f_name, l_name, role_id, user_id);
+		return Objects.hash(id, password, role, username);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -58,13 +58,13 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(f_name, other.f_name) && Objects.equals(l_name, other.l_name) && role_id == other.role_id
-				&& user_id == other.user_id;
+		return id == other.id && Objects.equals(password, other.password) && role == other.role
+				&& Objects.equals(username, other.username);
 	}
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", f_name=" + f_name + ", l_name=" + l_name + ", role_id=" + role_id + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
-	
+
 	
 }

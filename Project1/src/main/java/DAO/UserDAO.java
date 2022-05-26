@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Role;
 import Models.User;
 import Utilities.ConnectionFactory;
 
@@ -28,10 +29,10 @@ public class UserDAO {
 			
 			while(rs.next()) {
 				User u = new User(
-						rs.getInt("user_id"),
-						rs.getString("f_name"),
-						rs.getString("l_name"),
-						rs.getInt("role_id")				
+						rs.getInt("id"),
+						rs.getString("username"),
+						rs.getString("password"),
+						Role.valueOf(rs.getString("role"))				
 						);
 				userList.add(u);
 			}
@@ -46,13 +47,13 @@ public class UserDAO {
 
 	public void insertUser(User newUser) throws SQLException {
 		try(Connection conn = ConnectionFactory.getConnection()){
-			String sql = "insert into users (f_name, l_name, role_id) " + "values (?, ?, ?);";
+			String sql = "insert into users (username, password, role) " + "values (?, ?, ?);";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, newUser.getF_name());
-			ps.setString(2, newUser.getL_name());
-			ps.setInt(3, newUser.getRole_id());
+			ps.setString(1, newUser.getUsername());
+			ps.setString(2, newUser.getPassword());
+			ps.setRole(3, newUser.getRole());
 			
 			ps.executeUpdate();
 			

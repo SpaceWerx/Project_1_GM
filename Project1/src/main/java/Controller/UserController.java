@@ -23,6 +23,7 @@ import io.javalin.http.Handler;
 //			}
 				
 			List<User> allUsers = us.getUsers();
+			System.out.println("In UserHandler");
 			
 			Gson gson = new Gson();
 			
