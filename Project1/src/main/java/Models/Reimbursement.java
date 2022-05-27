@@ -1,7 +1,5 @@
 package Models;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Reimbursement {
@@ -19,7 +17,7 @@ public class Reimbursement {
 	public Reimbursement(int iD, int author, int resolver, String description, double amount, Status status,
 			Type type) {
 		super();
-		ID = iD;
+		this.ID = iD;
 		this.author = author;
 		this.resolver = resolver;
 		this.description = description;
@@ -31,13 +29,13 @@ public class Reimbursement {
 		return ID;
 	}
 	public void setID(int iD) {
-		ID = iD;
+		this.ID = iD;
 	}
 	public int getAuthor() {
 		return author;
 	}
 	public void setAuthor(int author) {
-		this.author = author;
+		author = author;
 	}
 	public int getResolver() {
 		return resolver;
@@ -69,28 +67,5 @@ public class Reimbursement {
 	public void setType(Type type) {
 		this.type = type;
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(ID, amount, author, description, resolver, status, type);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Reimbursement other = (Reimbursement) obj;
-		return ID == other.ID && Double.doubleToLongBits(amount) == Double.doubleToLongBits(other.amount)
-				&& author == other.author && Objects.equals(description, other.description)
-				&& resolver == other.resolver && status == other.status && type == other.type;
-	}
-	@Override
-	public String toString() {
-		return "Reimbursement [ID=" + ID + ", author=" + author + ", resolver=" + resolver + ", description="
-				+ description + ", amount=" + amount + ", status=" + status + ", type=" + type + "]";
-	}
-		
 	
 }

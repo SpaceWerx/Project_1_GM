@@ -15,9 +15,11 @@ import Utilities.ConnectionFactory;
 
 public class ReimbursementDAO {
 
-		public List<Reimbursement> getReimbursementById(int id) {
+		
+		
+		public static Reimbursement getReimbursementById(int id) {
 			try(Connection conn = ConnectionFactory.getConnection()){
-				ResultSet rs = null;
+				
 				
 				String sql = "select * from ers_reimbursements where id = ?";
 				
@@ -25,34 +27,28 @@ public class ReimbursementDAO {
 				
 				ps.setInt(1, id);
 				
-				rs = ps.executeQuery();
+				ResultSet resultSet = ps.executeQuery();
 				
-				List<Reimbursement> reimbursementList = new ArrayList<>();
-				
-				while(rs.next()) {
-					Reimbursement r = new Reimbursement(
-							rs.getInt("id"),
-							rs.getInt("author"),
-							rs.getInt("resolver"),
-							rs.getString("descirption"),
-							rs.getDouble("amount"),
-							Status.valueOf(rs.getString("status")),
-							Type.valueOf(rs.getString("type"))
-							);
-							
-							reimbursementList.add(r);
-							
-						
-				}
-				return reimbursementList;
-				
-			} catch (SQLException e) {
-				System.out.println("Something went wrong with the database!");
-				e.printStackTrace();
-				return null;
+				if(resultSet.next()) {
+
+	                return new Reimbursement(
+	                        resultSet.getInt("id"),
+	                        resultSet.getInt("author"),
+	                        resultSet.getInt("resolver"),
+	                        resultSet.getString("description"),
+	                        resultSet.getDouble("amount"),
+	                        Status.valueOf(resultSet.getString("status")),
+	                        Type.valueOf(resultSet.getString("type"))
+	                        );
+	                }
+	            } catch (SQLException e) {
+
+	                System.out.println("Something went wrong with the database!");
+	                e.printStackTrace();
+	            }
+
+	        return null;
 			}
-		
-		}
 		public List<Reimbursement> getReimbursementsByUser (int userId){
 			
 			try (Connection conn = ConnectionFactory.getConnection()){
@@ -130,32 +126,30 @@ public class ReimbursementDAO {
 			return null;
 		}
 		
-		public List<Reimbursement> getAllREimbrusements(){
+		public List<Reimbursement> getAllReimbursements(){
 			
 			try (Connection conn = ConnectionFactory.getConnection()){
-				ResultSet rs = null;
-				
+								
 				String sql = "select * from ers_reimbursements";
 				
 				Statement s = conn.createStatement();
 				
-				rs = s.executeQuery(sql);
+				ResultSet rs = s.executeQuery(sql);
 				
 			 List<Reimbursement> reimbursementList = new ArrayList<>();
 				
 			while(rs.next()) {
-				Reimbursement r = new Reimbursement(
+				 reimbursementList.add(new Reimbursement(
 						rs.getInt("id"),
 						rs.getInt("author"),
 						rs.getInt("resolver"),
-						rs.getString("descirption"),
+						rs.getString("description"),
 						rs.getDouble("amount"),
 						Status.valueOf(rs.getString("status")),
 						Type.valueOf(rs.getString("type"))
-						);
+						));
 						
-						reimbursementList.add(r);
-				
+										
 			}
 				return reimbursementList;
 				
@@ -184,6 +178,7 @@ public class ReimbursementDAO {
 				ps.setObject(4, reimbursementToBeSubmitted.getStatus().name());
 				ps.setDouble(5, reimbursementToBeSubmitted.getAmount());
 				
+				
 				ResultSet rs;
 				
 				if((rs = ps.executeQuery()) !=null) {
@@ -206,12 +201,12 @@ public class ReimbursementDAO {
 			try (Connection conn = ConnectionFactory.getConnection()){
 				
 				
-				String sql = "UPDATE ers_reimbursements SET resolver = ?, status =?::status WHERE id =?";
+				String sql = "UPDATE ers_reimbursements SET resolver = ?, status = ?::status WHERE id =?";
 								
 				PreparedStatement ps = conn.prepareStatement(sql);
 				
 				ps.setInt(1, unprocessedReimbursement.getResolver());
-				ps.setObject(2, unprocessedReimbursement.getStatus().name());
+				ps.setObject(2, unprocessedReimbursement.getStatus());
 				ps.setInt(3, unprocessedReimbursement.getID());
 				
 				ps.executeUpdate();

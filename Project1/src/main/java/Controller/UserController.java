@@ -12,17 +12,8 @@ import io.javalin.http.Handler;
 		UserService us = new UserService();
 		
 		public Handler getUserHandler = (ctx) ->{
-			
-	//This does not work anymore like it is intended to, do not use this		
-//			if(ctx.req.getSession(false) != null) {
-//			
-//			}
-//			else {
-//				
-//				ctx.status(401);
-//			}
-				
-			List<User> allUsers = us.getUsers();
+						
+			List<User> allUsers = us.getAllUsers();
 					
 			Gson gson = new Gson();
 			
@@ -46,30 +37,4 @@ import io.javalin.http.Handler;
 			ctx.status(201);
 		};
 		
-		public Handler getUserByID = (ctx) ->{
-			
-			int id = Integer.parseInt(ctx.pathParam("id"));
-			
-					List<User> userById = us.getUserById(id);
-							
-					Gson gson = new Gson();
-					
-					String JSONObject = gson.toJson(userById);
-						
-					ctx.result(JSONObject);
-					ctx.status(200);
-		};
-		
-		public Handler getUsername = (ctx) ->{
-			
-			
-			List<User> userById = us.getUserByUsername(null);
-					
-			Gson gson = new Gson();
-			
-			String JSONObject = gson.toJson(userById);
-				
-			ctx.result(JSONObject);
-			ctx.status(200);
-};
 }

@@ -1,35 +1,50 @@
 package Service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import DAO.UserDAO;
+import Models.Role;
 import Models.User;
 
 public class UserService {
 	
-	UserDAO uDAO = new UserDAO();
+	static UserDAO uDAO = new UserDAO();
 	
-	public List<User> getUsers() throws SQLException{
+	public List<User> getAllUsers() throws SQLException{
 		
-			List<User> users = uDAO.getUsers();
+			List<User> users = uDAO.getAllUsers();
 			
 			return users;
 	}
 	public void addUser(User newUser) throws SQLException{
 		
-		uDAO.insertUser(newUser);
+		uDAO.create(newUser);
 	}
-	public List<User> getUserById(int id){
+	public static User getUserById(int id){
 		
-		List<User> user = uDAO.getUserById(id);
-		
-		return user;
+		return uDAO.getUserById(id);
 	}
-	public List<User> getUserByUsername(String username){
+	public static User getUserByUsername(String username){
 		
-		List<User> users = uDAO.getUserByUsername(username);
+		return uDAO.getByUsername(username);
 		
-		return users;
+		
 	}
+
+	public List<User> getUserByRole(Role role){
+		
+	
+        List<User> byRole = new ArrayList<>();
+        
+        for(User user : uDAO.getAllUsers()) {
+            if(user.getRole() == role) 
+            {
+                byRole.add(user);
+            }
+        }
+
+        return byRole;
+    }
 }

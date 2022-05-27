@@ -8,32 +8,26 @@ import Models.User;
 
 public class AuthService {
 
-	public int register(User userToBeRegistered) {
+	public static int register(User userToBeRegistered) throws SQLException {
 		
 //		if(UserDAO.getByUsername(userToBeRegistered.getUsername())!= null) {
 //			
 //		}
 				
-		try {
-			return UserDAO.create(userToBeRegistered);
-		} catch(SQLException e) {
-			return 0;
-		}
+		return UserDAO.create(userToBeRegistered);
 	}
 	
 	public int login(String username, String password) {
-		User user;
+		User user = null;
 		
 		try {
-			
-			user = UserDAO.getByUsername(username);
-			
-			if (user!=null && password.equals(user.getPassword()) && user.getRole() == Role.Manager) {
+						
+			if (username.equals("manager")  && password.equals(user.getPassword()) && user.getRole() == Role.Manager) {
 				
 				System.out.println("Manager logged In Successfully!");
 				return 1;
 				
-			} else if (user!=null && !password.equals(user.getPassword()) && user.getRole() == Role.Employee) {
+			} else if (username.equals("employee") && !password.equals(user.getPassword()) && user.getRole() == Role.Employee) {
 				
 				System.out.println("Employee logged in Successfully");
 				return 2;

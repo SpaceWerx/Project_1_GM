@@ -13,8 +13,8 @@ import Models.User;
 
 public class ReimbursementService {
 
-	ReimbursementDAO reimbursementDAO = new ReimbursementDAO();
-	UserService userService = new UserService();
+	static ReimbursementDAO reimbursementDAO = new ReimbursementDAO();
+	UserService us = new UserService();
 
 	public List<Reimbursement> getPendingReimbursements() { return reimbursementDAO.getByStatus (Status.Pending); }
 
@@ -29,39 +29,23 @@ public class ReimbursementService {
 
 
 
-	public int submitReimbursement (Reimbursement reimbursementToBeSubmitted) {
+	public static int submitReimbursement (Reimbursement reimbursementToBeSubmitted) {
 
-	User employee = userService.getUserById(reimbursementToBeSubmitted.getAuthor());
-
-	if(employee.getRole () != Role. Employee) {
-
-			throw new IllegalArgumentException ("Managers cannot submit reimbursement requests.");
-	} 	else {
-
-		reimbursementToBeSubmitted.setStatus (Status. Pending);
+		reimbursementToBeSubmitted.setStatus (Status.Pending);
 		
 		return reimbursementDAO.create(reimbursementToBeSubmitted);
 	}
-  }
 
-	public Reimbursement update(Reimbursement unprocessedReimbursement, int resolverId, Status updatedStatus) {
-		User manager = userService.getUserById(resolverId);
-	
-	if(manager.getRole () != Role. Manager) {
-	
-		throw new IllegalArgumentException ("An Employee cannot process reimbursement requests.");
-	} else {
-
-	unprocessedReimbursement.setResolver (resolverId); 
-	unprocessedReimbursement.setStatus(updatedStatus); 
-	
-		   }
+	public static Reimbursement update(Reimbursement unprocessedReimbursement) {
+		
+	reimbursementDAO.update(unprocessedReimbursement);
+	return unprocessedReimbursement;
 	}
 	
-	public Reimbursement getReimbursementById (int id) {return reimbursementDAO.getReimbursementById(id); }
+	public Reimbursement getReimbursementById (int id) {return ReimbursementDAO.getReimbursementById(id); }
 	
-	public List<Reimbursement> getReimbursementsByAuthor(int userId) { 
-		return reimbursementDAO.getReimbursementsByUser (userId);
+	public static List<Reimbursement> getReimbursementByAuthor(int userId) {
+	    return reimbursementDAO.getReimbursementsByUser(userId);
 	}
 	
 //	public Handler handleProcess = (ctx) =>{
@@ -71,4 +55,3 @@ public class ReimbursementService {
 //		int id = reimbursement.getResolver();
 //		Status statusInput = 
 	}
-}
