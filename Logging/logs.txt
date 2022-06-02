@@ -1,0 +1,43 @@
+2022-06-02 10:35:49 INFO  Launcher:24 - /user accessed login prompt
+2022-06-02 10:36:14 INFO  Launcher:34 - /User successfully logged in/
+2022-06-02 10:36:37 INFO  Launcher:40 - /User's answer was: yes/
+2022-06-02 10:36:37 INFO  Launcher:53 - /I don't think the User is all that smart/
+2022-06-02 10:37:03 INFO  Launcher:24 - /user accessed login prompt
+2022-06-02 10:37:09 INFO  Launcher:34 - /User successfully logged in/
+2022-06-02 10:37:13 INFO  Launcher:40 - /User's answer was: Yes/
+2022-06-02 10:37:21 INFO  Launcher:45 - /User's order is: World Domination/
+2022-06-02 10:39:17 INFO  Launcher:24 - /User accessed login prompt
+2022-06-02 10:39:28 INFO  Launcher:34 - /User successfully logged in/
+2022-06-02 10:39:31 INFO  Launcher:40 - /User's answer was: No/
+2022-06-02 10:39:31 INFO  Launcher:49 - /This is in fact Patrick/
+2022-06-02 10:39:36 INFO  Launcher:58 - /User wishes to do:Sleeptoday/
+2022-06-02 10:39:36 INFO  Launcher:67 - /User is clearly a procrastinator/
+2022-06-02 10:57:38 INFO  Launcher:24 - /User accessed login prompt
+2022-06-02 10:57:46 INFO  Launcher:34 - /User successfully logged in/
+2022-06-02 10:57:52 INFO  Launcher:40 - /User's answer was: Yes/
+2022-06-02 10:57:59 INFO  Launcher:45 - /User's order is: Shoes + other shoes please/
+2022-06-02 10:58:05 INFO  Launcher:58 - /User wishes to have items shipped to: Home/
+2022-06-02 10:58:05 FATAL Launcher:62 - /User requested to-home delivery, even though they have no home
+2022-06-02 10:58:45 INFO  Launcher:24 - /User accessed login prompt
+2022-06-02 10:58:48 INFO  Launcher:34 - /User successfully logged in/
+2022-06-02 10:58:53 INFO  Launcher:40 - /User's answer was: No/
+2022-06-02 10:58:53 INFO  Launcher:49 - /User declined BOGO/
+2022-06-02 10:59:16 INFO  Launcher:58 - /User wishes to have items shipped to: Drop-off/
+2022-06-02 10:59:16 INFO  Launcher:67 - /User is clearly not perceptive enough for this quest/
+2022-06-02 10:59:58 INFO  Launcher:24 - /User accessed login prompt
+2022-06-02 11:00:06 INFO  Launcher:34 - /User successfully logged in/
+2022-06-02 11:00:09 INFO  Launcher:40 - /User's answer was: Yes/
+2022-06-02 11:00:13 INFO  Launcher:45 - /User's order is: Shoes ya know/
+2022-06-02 11:00:19 INFO  Launcher:58 - /User wishes to have items shipped to: Drop-off/
+2022-06-02 11:00:19 INFO  Launcher:67 - /User failed a DC15 perception role and never recieved their package/
+2022-06-02 11:02:38 INFO  Launcher:24 - /User accessed login prompt
+2022-06-02 11:02:41 INFO  Launcher:34 - /User successfully logged in/
+2022-06-02 11:02:44 INFO  Launcher:40 - /User's answer was: yerrp/
+2022-06-02 11:02:44 INFO  Launcher:53 - /User has a Wisdom score of 3/
+2022-06-02 11:03:38 INFO  Launcher:24 - /User accessed login prompt
+2022-06-02 11:03:46 INFO  Launcher:34 - /User successfully logged in/
+2022-06-02 11:03:49 INFO  Launcher:40 - /User's answer was: yerp/
+2022-06-02 11:03:49 FATAL Launcher:53 - /User has a Wisdom score of 3/
+2022-06-02 11:04:09 INFO  Launcher:58 - /User wishes to have items shipped to: Home/
+2022-06-02 11:04:09 FATAL Launcher:62 - /User requested to-home delivery, even though they have no home
+2022-06-02 11:09:14 INFO  Launcher:24 - /User accessed login prompt
