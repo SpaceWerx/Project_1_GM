@@ -41,4 +41,7 @@ To-do list:
 
 ## Usage
 * After fully installing the required technoglogies, create a new Maven project in your IDE.
-  From there, build out the required 
+  From there, build out your models, controllers, utilities, and services for testing.
+   -  Models: User, Reimbursements, 
+      -Enums: ReimbursementType, Status
+   - Controllers:
