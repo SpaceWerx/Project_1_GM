@@ -36,12 +36,21 @@ To-do list:
   - Download DBeaver https://dbeaver.io/download/
   - Download PostgreSQL https://www.postgresql.org/download/
 
-- All the `code` required to get started
-- Images of what it should look like
+-  In order to fullfill the requirements of building this service, please refer to the ##Usage section below. You may also reference the code contained within my repository above.
 
 ## Usage
 * After fully installing the required technoglogies, create a new Maven project in your IDE.
-  From there, build out your models, controllers, utilities, and services for testing.
-   -  Models: User, Reimbursements, 
-      -Enums: ReimbursementType, Status
-   - Controllers:
+  From there, build out your models, controllers, utilities, and services for testing
+  
+  Here is the general structure of our service:
+  
+   - Models: User, Reimbursements, 
+         - Enums: ReimbursementType, Status, Role
+         
+   - Controllers: UserController, ReimbursementController, AuthController
+   
+   - Services: UserService, ReimbursementService, AuthService
+   
+   - DAO/Repository:  UserDAO, ReimbursementDAO
+   
+   - Utilities: ConnectionFactory
